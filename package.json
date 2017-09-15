@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "LOG_LEVEL=debug node index.js"
+    "start": "node index.js",
+    "debug": "LOG_LEVEL=debug node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/supermamon/"
+    "url": "https://github.com/supermamon/node-restify-jwt-sample"
   },
   "keywords": [
     "node",
@@ -25,7 +26,6 @@
     "restify": "^5.2.0",
     "restify-errors": "^5.0.0",
     "restify-jwt-community": "^0.5.1",
-    "url-join": "^2.0.2",
     "winston": "^2.3.1"
   }
 }
