@@ -4,6 +4,7 @@ module.exports = (server) => {
     require('./ping')(server)
 
     // protected routes
+    require('./whoami')(server)
     require('./home')(server)
     require('./admin')(server)
     
