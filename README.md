@@ -9,6 +9,7 @@ A sample api service with JWT authentication
 * protected/unprotected routes
 * admin/non-admin routes
 * logging (using winston)
+* unit tests
 
 ## Configure
 
