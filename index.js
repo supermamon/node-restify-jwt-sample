@@ -31,3 +31,5 @@ require('./routes')(server)
 // Serve
 server.listen(config.PORT);
 logger.info('%s: ready. listening on PORT ', MODULE_ID, config.PORT)
+
+module.exports = server

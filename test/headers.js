@@ -1,0 +1,3 @@
+module.exports = {
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obm55IEFwcGxlc2VlZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTUwNTQwMTk5Nn0.Egj7FOP4Zddc1fGRS_v6xoRqNqeZxbtB7n_VopVQuJ4'
+}

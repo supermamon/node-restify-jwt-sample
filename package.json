@@ -4,7 +4,7 @@
   "description": "A sample restify api service with JWT authentication",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "LOG_LEVEL=error mocha ./test/runner.js",
     "start": "node index.js",
     "debug": "LOG_LEVEL=debug node index.js"
   },
@@ -27,5 +27,10 @@
     "restify-errors": "^5.0.0",
     "restify-jwt-community": "^0.5.1",
     "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "supertest": "^3.0.0"
   }
 }
