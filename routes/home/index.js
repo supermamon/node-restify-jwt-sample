@@ -1,5 +1,6 @@
 const config    = require('../../config')
 
+// just to demo a route with multiple versions
 module.exports = (server) => {
     var PATH = config.basePath('/home/')
     server.get({ path: PATH,
