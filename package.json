@@ -1,12 +1,13 @@
 {
   "name": "node-restify-jwt-sample",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A sample restify api service with JWT authentication",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "debug": "LOG_LEVEL=debug node index.js"
+    "pretest": "eslint .",
+    "test": "cross-env LOG_LEVEL=error mocha --recursive --reporter spec --exit ./test/specs/",
+    "debug": "cross-env LOG_LEVEL=debug node index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -22,10 +23,17 @@
   "author": "Raymond Velasquez <at.supermamon@gmail.com> (https://supermamon.com)",
   "license": "MIT",
   "dependencies": {
-    "jsonwebtoken": "^8.0.1",
-    "restify": "^5.2.0",
+    "jsonwebtoken": "^8.1.0",
+    "restify": "^6.2.3",
     "restify-errors": "^5.0.0",
-    "restify-jwt-community": "^0.5.1",
-    "winston": "^2.3.1"
+    "restify-jwt-community": "^0.5.3",
+    "winston": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "cross-env": "^5.1.0",
+    "eslint": "^4.9.0",
+    "mocha": "^4.0.1",
+    "supertest": "^3.0.0"
   }
 }
