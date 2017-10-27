@@ -12,7 +12,7 @@ module.exports = {
 
     // will be used to building route paths
     basePath    : (path) => {
-        return API_ROOT.replace(/\/$/,'') + '/' + path.replace(/^\//,'')
+        return API_ROOT.replace(/\/$/, '') + '/' + path.replace(/^\//, '')
     }
-    
+
 }
