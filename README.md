@@ -23,14 +23,14 @@ Use `api/register` to generate tokens.
 ```sh
 $ curl -X POST \
 > -H "Content-Type: application/json" \
-> --data '{ "name": "Johnny Appleseed", "role": "test" }' \
+> --data '{ "name": "Johnny Appleseed", "role": "test", "password":"some-hashed-password" }' \
 http://localhost:8080/api/register
 
 {"name":"Johnny Appleseed","role":"test","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obm55IEFwcGxlc2VlZCIsInJvbGUiOiJ0ZXN0IiwiaWF0IjoxNTA5MDc2MTEwfQ.EsRsidT33amgeDX8u6SlE6LwWUs2jpyblogOvLaJ1Y8"}
 
 $ curl -X POST \
 > -H "Content-Type: application/json" \
-> --data '{ "name": "Tim Cook", "role": "admin" }' \
+> --data '{ "name": "Tim Cook", "role": "admin", "password":"some-hashed-password" }' \
 http://localhost:8080/api/register
 
 {"name":"Tim Cook","role":"admin","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiVGltIENvb2siLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1MDkwNzY0NzB9.f5_v9HfOAiOS4IiiQ5Pj0IxLOMJGWUhHQ57Zd9opqwE"}
