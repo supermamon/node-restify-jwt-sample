@@ -5,12 +5,12 @@ const httpErr   = require('restify-errors')
 
 module.exports = (req, res, next) => {
     logger.info('%s: request received', MODULE_ID)
+    logger.debug(`${MODULE_ID}: user`, req.user)
 
     // check if authentication has admin access
-    // override this check if user's role is test
-    // be careful though not to allow permanent changes is user's role is test
-    // or maybe make sure you don't grant test role to an end user
-    if (!req.user.role === 'admin' && req.user.role !== 'test') {
+    //   for CI/CD purposes, also allow `test` role to access the admin route
+    //   this can be expanded to check for NODE_ENV to prevent access in production
+    if (!(req.user.role === 'admin' || req.user.role === 'test')) {
         return res.send(new httpErr.ForbiddenError('You don\'t have sufficient priviledges.'))
     }
 
