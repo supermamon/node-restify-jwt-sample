@@ -1,39 +1,45 @@
 'use strict'
 
-const apiserver = require('../../test/server')
-const expect    = require('chai').expect
+require('../../')
+const config    = require('../../config')
+//const headers   = require('../../test/headers')
+const chai      = require('chai')
+const chaiHttp  = require('chai-http')
+
+const expect    = chai.expect
+chai.should()
+chai.use(chaiHttp)
+
+const PORT = config.PORT
+const HOST = config.HOST
+const endpoint = `http://${HOST}:${PORT}`
 
 describe('ROUTE: /api/register', () => {
+    var request
+    before( (done) => {
+        request = chai.request(endpoint).keepOpen()
+        done()
+    })
+
     it('should be a bad request without name', (done) => {
-        apiserver
+        request
         .post('/api/register')
         .send({ role: 'test' })
-        .expect('Content-type', /json/)
         .end( (err, res) => {
-            if (err) {
-                console.log(err.message)
-                return done(new Error('Supertest encountered an error'))
-            }
-
-            expect(res.status).to.equal(400)
+            expect(err).to.be.null
+            res.should.have.status(400)
             expect(res.body.code).to.equal('BadRequest')
             expect(res.body.message).to.equal('Incomplete registration information.')
-
             done()
         })
     })
     it('should be a bad request without role', (done) => {
-        apiserver
+        request
         .post('/api/register')
         .send({ name: 'ci-test-account' })
-        .expect('Content-type', /json/)
         .end( (err, res) => {
-            if (err) {
-                console.log(err.message)
-                return done(new Error('Supertest encountered an error'))
-            }
-
-            expect(res.status).to.equal(400)
+            expect(err).to.be.null
+            res.should.have.status(400)
             expect(res.body.code).to.equal('BadRequest')
             expect(res.body.message).to.equal('Incomplete registration information.')
 
@@ -41,20 +47,15 @@ describe('ROUTE: /api/register', () => {
         })
     })
     it('should be a bad request without a password', (done) => {
-        apiserver
+        request
         .post('/api/register')
         .send({
             name: 'ci-test-account',
             role: 'test'
         })
-        .expect('Content-type', /json/)
         .end( (err, res) => {
-            if (err) {
-                console.log(err.message)
-                return done(new Error('Supertest encountered an error'))
-            }
-
-            expect(res.status).to.equal(400)
+            expect(err).to.be.null
+            res.should.have.status(400)
             expect(res.body.code).to.equal('BadRequest')
             expect(res.body.message).to.equal('Incomplete registration information.')
 
@@ -62,23 +63,16 @@ describe('ROUTE: /api/register', () => {
         })
     })
     it('should only return usename and role with token', (done) => {
-        apiserver
+        request
         .post('/api/register')
         .send({
             name: 'ci-test-account',
             role: 'test',
             password: 'some-hashed-password'
         })
-        .expect('Content-type', /json/)
         .end( (err, res) => {
-            if (err) {
-                console.log(err.message)
-                return done(new Error('Supertest encountered an error'))
-            }
-
-            // no errors
-            expect(res.status).to.equal(200)
-            expect(res.body.error).to.be.undefined
+            expect(err).to.be.null
+            res.should.have.status(200)
 
             // matches input
             expect(res.body.name).to.equal('ci-test-account')

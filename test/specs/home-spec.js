@@ -1,46 +1,49 @@
 'use strict'
 
-const apiserver = require('../../test/server')
+require('../../')
+const config    = require('../../config')
 const headers   = require('../../test/headers')
-const expect    = require('chai').expect
+const chai      = require('chai')
+const chaiHttp  = require('chai-http')
+
+const expect    = chai.expect
+chai.should()
+chai.use(chaiHttp)
+
+const PORT = config.PORT
+const HOST = config.HOST
+const endpoint = `http://${HOST}:${PORT}`
 
 describe('ROUTE: /api/home', function (){
+    var request
+    before( (done) => {
+        request = chai.request(endpoint).keepOpen()
+        done()
+    })
+
     it('v1 should say hello ci-test-account', (done) => {
-        apiserver
+        request
         .get('/api/home')
         .set('Authorization', headers.Authorization)
         .set('Accept-Version', '~1')
-        .expect('Content-type', /json/)
-        .expect(200) // THis is HTTP response
+        .send()
         .end( (err, res) => {
-            if (err) {
-                console.log(err.message)
-                return done(new Error('Supertest encountered an error'))
-            }
-
-            expect(res.body.error).to.be.undefined
+            expect(err).to.be.null
+            res.should.have.status(200)
             expect(res.body.hello).to.equal('ci-test-account')
-
-            return done()
+            done()
         })
     })
-    it('v2 should say welcome ci-test-account', (done) => {
-        apiserver
+    it('v2 should say return version:2', (done) => {
+        request
         .get('/api/home')
         .set('Authorization', headers.Authorization)
         .set('Accept-Version', '~2')
-        .expect('Content-type', /json/)
-        .expect(200) // THis is HTTP response
         .end( (err, res) => {
-            if (err) {
-                console.log(err.message)
-                return done(new Error('Supertest encountered an error'))
-            }
-
-            expect(res.body.error).to.be.undefined
-            expect(res.body.welcome).to.equal('ci-test-account')
-
-            return done()
+            expect(err).to.be.null
+            res.should.have.status(200)
+            expect(res.body.version).to.equal(2)
+            done()
         })
     })
 })
