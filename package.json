@@ -4,9 +4,9 @@
   "description": "A sample restify api service with JWT authentication",
   "main": "index.js",
   "scripts": {
-    "pretest": "eslint .",
-    "test": "cross-env LOG_LEVEL=error mocha --recursive --reporter spec --exit ./test/specs/",
-    "debug": "cross-env LOG_LEVEL=debug node index.js",
+    "posttest": "eslint .",
+    "test": "cross-env  LOG_LEVEL=error mocha --recursive --reporter spec --exit ./test/specs/",
+    "start:debug": "cross-env LOG_LEVEL=debug node index.js",
     "start": "node index.js"
   },
   "repository": {
@@ -23,17 +23,18 @@
   "author": "Raymond Velasquez <at.supermamon@gmail.com> (https://supermamon.com)",
   "license": "MIT",
   "dependencies": {
-    "jsonwebtoken": "^8.4.0",
-    "restify": "^6.4.0",
-    "restify-errors": "^6.1.1",
-    "restify-jwt-community": "^1.0.9",
-    "winston": "^2.4.4"
+    "chai-http": "^4.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "m-logger": "file:local_modules/m-logger",
+    "restify": "^8.5.1",
+    "restify-errors": "^8.0.2",
+    "restify-jwt-community": "^1.1.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "cross-env": "^5.2.0",
-    "eslint": "^5.12.0",
-    "mocha": "^5.2.0",
-    "supertest": "^3.4.1"
+    "cross-env": "^7.0.0",
+    "eslint": "^5.16.0",
+    "mocha": "^5.2.0"
   }
 }
