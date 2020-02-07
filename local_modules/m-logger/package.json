@@ -1,0 +1,8 @@
+{
+    "name": "m-logger",
+    "version": "0.0.1",
+    "description": "Winston logger wrapper",
+    "main": "index.js",
+    "author": "Raymond Velasquez <dev@supermamon.com>",
+    "license": "ISC"
+}

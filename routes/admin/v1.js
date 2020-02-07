@@ -1,5 +1,5 @@
 const MODULE_ID = 'api:admin'
-const logger    = require('../../utils/logger')
+const logger    = require('m-logger')
 
 const httpErr   = require('restify-errors')
 

@@ -1,5 +1,5 @@
 const MODULE_ID = 'api:register'
-const logger    = require('../../utils/logger')
+const logger    = require('m-logger')
 const config    = require('../../config')
 const errors    = require('restify-errors')
 
