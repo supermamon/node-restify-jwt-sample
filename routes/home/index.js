@@ -1,10 +1,20 @@
 const config    = require('../../config')
+const restify   = require('restify')
 
 // just to demo a route with multiple versions
 module.exports = (server) => {
-    var PATH = config.basePath('/home/')
-    server.get({ path: PATH,
-        version: '1.0.0' }, require('./v1'))
-    server.get({ path: PATH,
-        version: '2.0.0' }, require('./v2'))
+    var PATH = config.basePath('/home')
+    server.get(
+        PATH,
+        restify.plugins.conditionalHandler([
+            {
+                version: '1.0.0',
+                handler: require('./v1')
+            },
+            {
+                version: '2.0.0',
+                handler: require('./v2')
+            }
+        ])
+    )
 }

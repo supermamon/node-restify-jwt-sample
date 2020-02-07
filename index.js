@@ -1,17 +1,19 @@
 const MODULE_ID = 'app:main'
+const logger    = require('m-logger')
 const config    = require('./config')
-const logger    = require('./utils/logger')
-
-const jwt       = require('restify-jwt-community')
 
 logger.info('%s: initializing', MODULE_ID)
 
-var restify = require('restify')
-var plugins = require('restify').plugins
+const jwt     = require('restify-jwt-community')
+const restify = require('restify')
+const plugins = require('restify').plugins
+const server  = restify.createServer()
 
-var server  = restify.createServer()
+server.pre(restify.pre.sanitizePath())
+
 server.use(plugins.bodyParser())
 
+logger.verbose('securing with jwt')
 // Auth
 var jwtConfig = {
     secret: config.JWT_SECRET
@@ -26,11 +28,12 @@ server.use(jwt(jwtConfig).unless({
 }))
 
 // Routes
+logger.verbose('loading routes')
 require('./routes')(server)
 
 // Serve
 server.listen(config.PORT)
-logger.info('%s: ready. listening on PORT ', MODULE_ID, config.PORT)
+logger.info('%s: ready. listening on PORT %d', MODULE_ID, config.PORT)
 
 module.exports = server
 
