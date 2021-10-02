@@ -4,6 +4,7 @@
   "description": "A sample restify api service with JWT authentication",
   "main": "index.js",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "posttest": "eslint .",
     "test": "cross-env  LOG_LEVEL=error mocha --recursive --reporter spec --exit ./test/specs/",
     "start:debug": "cross-env LOG_LEVEL=debug node index.js",
@@ -24,10 +25,9 @@
   "license": "MIT",
   "dependencies": {
     "chai-http": "^4.3.0",
-    "eslint": "^6.8.0",
     "jsonwebtoken": "^8.5.1",
     "m-logger": "file:local_modules/m-logger",
-    "mocha": "^7.1.1",
+    "mocha": "^9.1.2",
     "restify": "^8.5.1",
     "restify-errors": "^8.0.2",
     "restify-jwt-community": "^1.1.2",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "eslint": "^7.32.0"
   }
 }
