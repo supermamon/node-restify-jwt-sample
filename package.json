@@ -25,7 +25,7 @@
   "license": "MIT",
   "dependencies": {
     "chai-http": "^4.3.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "m-logger": "file:local_modules/m-logger",
     "mocha": "^9.1.2",
     "restify": "^8.5.1",
