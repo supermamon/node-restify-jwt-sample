@@ -28,7 +28,7 @@
     "jsonwebtoken": "^9.0.0",
     "m-logger": "file:local_modules/m-logger",
     "mocha": "^9.1.2",
-    "restify": "^8.5.1",
+    "restify": "^11.1.0",
     "restify-errors": "^8.0.2",
     "restify-jwt-community": "^2.0.0",
     "winston": "^3.2.1"
