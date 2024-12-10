@@ -27,7 +27,7 @@
     "chai-http": "^4.3.0",
     "jsonwebtoken": "^9.0.0",
     "m-logger": "file:local_modules/m-logger",
-    "mocha": "^9.1.2",
+    "mocha": "^11.0.1",
     "restify": "^11.1.0",
     "restify-errors": "^8.0.2",
     "restify-jwt-community": "^2.0.0",
